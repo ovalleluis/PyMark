@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import RequestContext, loader
+from .models import *
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the Marketplace Index")
+    template = loader.get_template('core/index.html')
+    return HttpResponse(template.render())
+
 
 # Create your views here.
 def supplier(request, supplier_id):
